@@ -304,6 +304,10 @@ class Player(object):
         """Add Item To Playlist"""
         item = self.__quote(item)
         self.request("playlist add %s" % (item))
+    
+    def playlist_current_track_index(self):
+        """Get the number of the current track"""
+        return int(self.request('playlist index ?'))+1
 
     def playlist_insert(self, item):
         """Insert Item Into Playlist (After Current Track)"""
