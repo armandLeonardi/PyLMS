@@ -104,6 +104,9 @@ class Server(object):
                 result = response[len(command_string)-1:]
             else:
                 result = response[len(command_string_quoted)-1:]
+        result = result.strip()
+        import unicodedata
+        result = unicodedata.normalize('NFKD', result).encode('ascii','ignore')
         return result
 
     def request_with_results(self, command_string, preserve_encoding=False):
